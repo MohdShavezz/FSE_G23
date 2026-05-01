@@ -1,0 +1,24 @@
+name: Deploy React App
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: npm install
+      - run: npm run build
+
+      - name: Setup Firebase Auth
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT }}' > serviceAccountKey.json
+
+      - name: Deploy
+        run: |
+          export GOOGLE_APPLICATION_CREDENTIALS=serviceAccountKey.json
+          npx firebase-tools deploy --only hosting
