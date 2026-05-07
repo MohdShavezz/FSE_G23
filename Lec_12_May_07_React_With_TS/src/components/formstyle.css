@@ -1,0 +1,17 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: auto;
+    gap: .5rem;
+    background: darkgray;
+    padding: 2rem;
+    border-radius: 10px;
+    color: white;
+}
+
+.my-btn{
+        background: chartreuse;
+    border: none;
+    padding: .3rem .7rem;
+}
